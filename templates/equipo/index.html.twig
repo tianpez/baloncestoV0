@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipo index{% endblock %}
+
+{% block body %}
+    <h1>Equipo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreEquipo</th>
+                <th>Presupuesto</th>
+                <th>Fecha Fundación</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipo in equipos %}
+            <tr>
+                <td>{{ equipo.id }}</td>
+                <td>{{ equipo.nombreEquipo }}</td>
+                <td>{{ equipo.presupuesto }}</td>
+                <td>{{ equipo.fechaFunda ? equipo.fechaFunda|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_equipo_show', {'id': equipo.id}) }}">show</a>
+                    <a href="{{ path('app_equipo_edit', {'id': equipo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_equipo_new') }}">Create new</a>
+{% endblock %}

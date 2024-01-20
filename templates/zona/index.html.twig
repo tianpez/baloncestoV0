@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zona index{% endblock %}
+
+{% block body %}
+    <h1>Zona index</h1>
+ 
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreZona</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for zona in zonas %}
+            <tr>
+                <td>{{ zona.id }}</td>
+                <td>{{ zona.nombreZona }}</td>
+                <td>
+                    <a href="{{ path('app_zona_show', {'id': zona.id}) }}">show</a>
+                    <a href="{{ path('app_zona_edit', {'id': zona.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_zona_new') }}">Create new</a>
+{% endblock %}
