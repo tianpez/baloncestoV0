@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jugador{% endblock %}
+
+{% block body %}
+    <h1>Jugador</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ jugador.id }}</td>
+            </tr>
+            <tr>
+                <th>NombreJugador</th>
+                <td>{{ jugador.nombreJugador }}</td>
+            </tr>
+            <tr>
+                <th>FechaNaci</th>
+                <td>{{ jugador.fechaNaci ? jugador.fechaNaci|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Estatura</th>
+                <td>{{ jugador.estatura }}</td>
+            </tr>
+            <tr>
+                <th>Posicion</th>
+                <td>{{ jugador.posicion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_jugador_index') }}">back to list</a>
+
+    <a href="{{ path('app_jugador_edit', {'id': jugador.id}) }}">edit</a>
+
+    {{ include('jugador/_delete_form.html.twig') }}
+{% endblock %}
